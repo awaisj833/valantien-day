@@ -122,7 +122,7 @@ const HeroSection = ({ clickCount, onNoClick, onYesClick, isAccepted }) => {
                   </h2>
                   
                   <p className="text-lg md:text-xl text-gray-600 font-fondamento italic mt-6 max-[490px]:text-[14px]">
-                    ( I mean, we both knew you'd say Yes eventually 😉 )
+                    ( I mean, we both knew you'd say Yes eventually😉 )
                   </p>
                 </div>
               ) : (
