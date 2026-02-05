@@ -93,7 +93,7 @@ const HeroSection = ({ clickCount, onNoClick, onYesClick, isAccepted }) => {
             className="cursor-pointer flex flex-col items-center justify-center bg-red-400 w-[320px] h-[220px] md:w-[600px] md:h-[400px] rounded-lg shadow-2xl relative border-4 border-red-300"
           >
              <div className="relative z-10 flex flex-col items-center">
-                 <div className="text-6xl md:text-8xl animate-bounce">❣</div>
+                 <div className="text-6xl md:text-8xl animate-bounce">❤️</div>
                  <p className="text-white font-bold mt-4 uppercase tracking-widest text-sm md:text-2xl">Tap to Open</p>
              </div>
              <div className="absolute top-0 left-0 w-0 h-0 border-l-[160px] md:border-l-[300px] border-r-[160px] md:border-r-[300px] border-t-[120px] md:border-t-[220px] border-l-transparent border-r-transparent border-t-red-500 opacity-80" />
