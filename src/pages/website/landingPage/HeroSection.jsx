@@ -1,11 +1,29 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+import img1 from "../../../assets/images/1.jpeg";
+import img3 from "../../../assets/images/3.jpeg";
+import img4 from "../../../assets/images/4.jpeg";
+import img5 from "../../../assets/images/5.jpeg";
+import img6 from "../../../assets/images/6.jpeg";
 
 const HeroSection = ({ clickCount, onNoClick, onYesClick, isAccepted }) => {
   const [noPosition, setNoPosition] = useState({ x: 0, y: 0 });
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const yesBtnRef = useRef(null);
   const noBtnRef = useRef(null);
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [img5, img4, img6, img3, img1];
+
+  useEffect(() => {
+    if (isAccepted) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 2000);
+      return () => clearInterval(interval);
+    }
+  }, [isAccepted, images.length]);
 
   const moveNoButton = () => {
     if (!yesBtnRef.current || !noBtnRef.current) return;
@@ -97,16 +115,17 @@ const HeroSection = ({ clickCount, onNoClick, onYesClick, isAccepted }) => {
               {isAccepted ? (
                 // Success View
                 <div className="animate-fade-in">
-                  <h1 className="text-4xl md:text-5xl font-fondamento text-red-600 mb-8 drop-shadow-sm font-bold max-[490px]:text-[28px]">
+                  <h1 className="text-4xl md:text-4xl font-fondamento text-red-600 mb-2 drop-shadow-sm font-bold max-[490px]:text-[28px]">
                     I knew it! 🎉
                   </h1>
                   
-                  <div className="flex justify-center mb-8">
-                    <div className="w-full max-w-md aspect-video bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden shadow-lg border-2 border-red-200">
+                  <div className="flex justify-center mb-4">
+                    <div className="w-full max-w-md h-[330px] bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden shadow-lg border-2 border-red-200">
                         <img 
-                            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3R6bWJ5b2ExcjJ6eXJ6eXJ6eXJ6eXJ6eXJ6eXJ6eXJ6eXJ6eXJ/26BRv0ThflsKCqLxK/giphy.gif" 
+                            src={images[currentImageIndex]} 
                             alt="Celebration" 
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover transition-opacity duration-500"
+                            key={currentImageIndex} // Key helps with transition animation if we want it, though standard img swap works too
                             onError={(e) => {
                                 e.target.onerror = null; 
                                 e.target.parentNode.innerHTML = '<span class="text-gray-400">Photo Coming Soon! 📸</span>'
@@ -115,13 +134,13 @@ const HeroSection = ({ clickCount, onNoClick, onYesClick, isAccepted }) => {
                     </div>
                   </div>
 
-                  <h2 className="text-2xl md:text-3xl font-fondamento text-red-600 mb-4 font-bold leading-relaxed max-[490px]:text-[18px]">
+                  <h2 className="text-2xl md:text-2xl font-fondamento text-red-600 mb-4 font-semibold leading-relaxed max-[490px]:text-[18px]">
                     Congratulations! You are now Officially <br/>
                     <span className="text-red-500">Abdullah's Valentine ❤️</span> <br/>
                     Forever and Always! 💑
                   </h2>
                   
-                  <p className="text-lg md:text-xl text-gray-600 font-fondamento italic mt-6 max-[490px]:text-[13.5px]">
+                  <p className="text-lg md:text-xl text-gray-600 font-fondamento italic mt-2 max-[490px]:text-[13px]">
                     ( I mean, we both knew you'd say Yes eventually😉 )
                   </p>
                 </div>

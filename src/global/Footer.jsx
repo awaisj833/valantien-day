@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaYoutube, FaWhatsapp, FaInstagram, FaWeixin } from "react-icons/fa";
-import FooterBg from "../assets/images/FooterBg.png";
+// import FooterBg from "../assets/images/FooterBg.png"; // File missing
+const FooterBg = "https://placehold.co/1920x400/efe5db/000000?text=Footer+Background";
 import CurrencySelector from "../components/CurrencySelector";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrency } from "../store/slices/globalSlice";

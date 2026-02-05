@@ -2,7 +2,9 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrency, setLanguage } from "../store/slices/globalSlice";
-import { logo, HeaderBg } from "../assets/images";
+// import { logo, HeaderBg } from "../assets/images"; // Invalid import, files missing
+const logo = "https://placehold.co/130x40/transparent/000000?text=LOGO";
+const HeaderBg = "https://placehold.co/1920x41/001f33/ffffff?text=Header+Background";
 import CurrencySelector from "../components/CurrencySelector";
 import {
   ThreadsIcon,
